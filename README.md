@@ -35,7 +35,7 @@ There are two ways to run programs through Slurm: `srun` and `sbatch`. In both c
 | `-N` | Number of nodes |
 | `-w` | Restrict the job to specific nodes (e.g. `stud-[1-3]`) |
 | `--time` | Time limit, `HH:MM:SS` |
-| `--min-cpus` | Minimum number of CPU cores |
+| `--mincpus` | Minimum number of CPU cores |
 | `--mem` | Amount of RAM |
 | `-G` | Number of GPUs |
 | `--pty` | Run the command in a pseudo-terminal (needed for interactive sessions) |
@@ -54,7 +54,7 @@ Interactive session for 1 hour 15 minutes with 8 CPU cores, 16 GB of RAM and one
 
 ```bash
 srun --account=10-stud-2627-z -p student -N 1 \
-  -w stud-[2-3] --time=01:15:00 --min-cpus 8 --mem 16GB -G 1 \
+  -w stud-[2-3] --time=01:15:00 --mincpus 8 --mem 16GB -G 1 \
   --pty /bin/bash
 ```
 
@@ -63,7 +63,7 @@ The same session, but inside the Docker image `nvcr.io/nvidia/cuda:13.4.2-cudnn-
 ```bash
 srun --account=10-stud-2627-z -p student -N 1 \
   --container-image=nvcr.io#nvidia/cuda:13.4.2-cudnn-devel-ubuntu26.04 \
-  -w stud-[2-3] --time=01:15:00 --min-cpus 8 --mem 16GB -G 1 \
+  -w stud-[2-3] --time=01:15:00 --mincpus 8 --mem 16GB -G 1 \
   --pty /bin/bash
 ```
 
@@ -79,7 +79,7 @@ srun --account=10-stud-2627-z -p student -N 1 \
 #SBATCH -p student
 #SBATCH -N 1
 #SBATCH --time=00:10:00
-#SBATCH --min-cpus 8
+#SBATCH --mincpus 8
 #SBATCH --mem 16GB
 #SBATCH -G 1
 
